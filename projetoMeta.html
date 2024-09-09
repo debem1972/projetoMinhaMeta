@@ -11,7 +11,34 @@
 </head>
 
 <body>
+    <div class="container">
+        <h1>Controle de Gastos Diários</h1>
 
+        <div class="input-container">
+            <label for="meta">Meta de Economia (R$):</label>
+            <input type="number" id="meta" class="campo-financeiro" placeholder="Informe sua meta" required>
+        </div>
+
+        <div class="input-container">
+            <label for="receita">Receita Mensal Disponível (R$):</label>
+            <input type="number" id="receita" class="campo-financeiro" placeholder="Informe sua receita" required>
+        </div>
+
+        <div class="input-container">
+            <label for="data">Data de Hoje:</label>
+            <input type="date" id="data" required>
+        </div>
+
+        <div class="input-container">
+            <label for="gasto">Gasto do Dia (R$):</label>
+            <input type="number" id="gasto" class="campo-financeiro" placeholder="Informe seus gastos de hoje" required>
+        </div>
+
+        <button id="adicionarGasto">Adicionar Gasto</button>
+
+        <h2>Saldo Disponível Real: <span id="saldoReal">R$ 0,00</span></h2>
+        <h2>Você pode gastar até: <span id="gastoDiario">R$ 0,00</span> por dia</h2>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
