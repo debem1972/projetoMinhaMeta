@@ -16,7 +16,8 @@ body {
 .container {
     background-color: #fff;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
+    box-shadow:2px 2px 8px black;
     border-radius: 8px;
     max-width: 400px;
     width: 100%;
