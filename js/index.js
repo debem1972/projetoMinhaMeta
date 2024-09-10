@@ -305,6 +305,7 @@ document.getElementById('adicionarGasto').addEventListener('click', function () 
     const receita = parseFloat(converterParaNumero(document.getElementById('receita').value));
     const gastoDia = parseFloat(converterParaNumero(document.getElementById('gasto').value));
     const dataInput = new Date(document.getElementById('data').value);
+    const caixaRegister = document.querySelector('#som4');
 
     if (isNaN(meta) || isNaN(receita) || isNaN(gastoDia) || isNaN(dataInput.getTime())) {
         alert('Por favor, preencha todos os campos corretamente.');
@@ -333,6 +334,9 @@ document.getElementById('adicionarGasto').addEventListener('click', function () 
     // Armazena meta e receita no localStorage
     localStorage.setItem('meta', meta);
     localStorage.setItem('receita', receita);
+
+    //Toca o som de caixa registradora ao clicar no botão Adicionar Gasto
+    caixaRegister.play();
 });
 
 // Função para converter valor de string de moeda para número
