@@ -307,10 +307,17 @@ document.getElementById('adicionarGasto').addEventListener('click', function () 
     const dataInput = new Date(document.getElementById('data').value);
     const caixaRegister = document.querySelector('#som4');
     const novoLimiteVoice = document.querySelector('#som5');
+    const erroCamposVazios = document.querySelector('#som6');
 
     if (isNaN(meta) || isNaN(receita) || isNaN(gastoDia) || isNaN(dataInput.getTime())) {
-        alert('Por favor, preencha todos os campos corretamente.');
+        erroCamposVazios.play();
+
+        setTimeout(function () {
+            alert('Por favor, preencha todos os campos corretamente.');
+        }, 300);
+
         return;
+
     }
 
     gastosTotais += gastoDia;
@@ -338,7 +345,8 @@ document.getElementById('adicionarGasto').addEventListener('click', function () 
 
     //Toca o som de caixa registradora ao clicar no botão Adicionar Gasto
     caixaRegister.play();
-    //Toca o som id #som5 0.5s após o botão ser clicado
+
+    //Toca o som id #som5 1.7s após o botão Adicionar Gasto ser clicado.
     setTimeout(function () {
         novoLimiteVoice.play();
     }, 1700);
