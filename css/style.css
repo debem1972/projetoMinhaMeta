@@ -37,6 +37,22 @@ h1 {
     margin-bottom: 5px;
 }
 
+/*Div pai do label e do icone de help*/
+.labelDoInput{
+    display: flex;
+    transition:all 0.3s;
+}
+
+.labelDoInput i{
+    margin-left:5px;
+    cursor:pointer;
+}
+
+.labelDoInput i:hover{
+    transform:scale(0.8);
+    color:green;    
+}
+
 
 
 input[type="text"],
