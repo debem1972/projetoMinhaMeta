@@ -28,7 +28,12 @@
         </div>
 
         <div class="input-container">
-            <label for="receita">Receita Mensal Disponível (R$):</label>
+            <div class="labelDoInput">
+                <label for="receita">Receita Mensal Disponível (R$):</label><i id="receitaHelp"
+                    class="bi-question-circle"></i>
+                <audio src="./sound/audioConceitoReceita.mp3" id="som8" type="audio/mpeg">Seu navegador não é
+                    compatível com este tipo de arquivo de audio!</audio>
+            </div>
             <input type="text" id="receita" class="campo-financeiro" placeholder="Informe sua receita" required>
         </div>
 
@@ -38,7 +43,11 @@
         </div>
 
         <div class="input-container">
-            <label for="gasto">Gasto do Dia (R$):</label>
+            <div class="labelDoInput">
+                <label for="gasto">Gasto do Dia (R$):</label><i id="gastoDiaHelp" class="bi-question-circle"></i>
+                <audio src="./sound/audioConceitoGastos.mp3" id="som9" type="audio/mpeg">Seu navegador não é
+                    compatível com este tipo de arquivo de audio!</audio>
+            </div>
             <input type="text" id="gasto" class="campo-financeiro" placeholder="Informe seus gastos de hoje" required>
         </div>
 

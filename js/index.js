@@ -71,12 +71,29 @@ function preencherCampos() {
 //Help
 //Capturando os elementos do help
 const helpMeta = document.querySelector('#metaHelp');
+const helpReceita = document.querySelector('#receitaHelp');
+const helpGastosDoDia = document.querySelector('#gastoDiaHelp');
+
 //Capturando os elementos de audio do help
 const ajudaMeta = document.querySelector('#som7');
+const ajudaReceita = document.querySelector('#som8');
+const ajudaGastos = document.querySelector('#som9');
 
+//Audio da ajuda do campo meta
 helpMeta.addEventListener('click', function () {
     ajudaMeta.play();
 });
+
+//Audio da ajuda do campo receita
+helpReceita.addEventListener('click', function () {
+    ajudaReceita.play();
+});
+
+
+//Audio da ajuda do campo gastos do dia
+helpGastosDoDia.addEventListener('click', function(){
+    ajudaGastos.play();
+})
 
 
 //-------------------------------------------------------------------------------------
