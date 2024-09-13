@@ -150,6 +150,10 @@ document.getElementById('adicionarGasto').addEventListener('click', function () 
     setTimeout(function () {
         novoLimiteVoice.play();
     }, 1700);
+
+    //Limpar os campos data e gasto do dia após enviar os dados
+    document.getElementById('data').value = '';
+    document.getElementById('gasto').value = '';
 });
 
 // Função para converter valor de string de moeda para número
