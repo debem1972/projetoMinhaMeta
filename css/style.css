@@ -40,6 +40,7 @@ h1 {
 /*Div pai do label e do icone de help*/
 .labelDoInput{
     display: flex;
+    /*position:relative;*/
     transition:all 0.3s;
 }
 
@@ -53,9 +54,28 @@ h1 {
     color:green;    
 }
 
+/*Div pai que abriga os input's meta e receita*/
+.divDoInput{
+    position:relative;
+    display:flex;
+    align-items: center;
+}
 
+.divDoInput input{
+    padding-right:30px;
+}
+
+
+.divDoInput i{
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #999;
+}
+/*---------------------------------------------------------------------------------*/
 
 input[type="text"],
+input[type="password"],
 input[type="date"] {
     width: 100%;
     padding: 8px;
