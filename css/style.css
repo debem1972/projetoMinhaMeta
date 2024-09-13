@@ -1,3 +1,12 @@
+@font-face {
+    font-family: "ieroglifo";
+    src: url(../fonts/the_orb_report/The-Orb-Report.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +26,7 @@ body {
     background-color: #fff;
     padding: 20px;
     /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/
-    box-shadow:2px 2px 8px black;
+    box-shadow: 2px 2px 8px black;
     border-radius: 8px;
     max-width: 400px;
     width: 100%;
@@ -38,40 +47,41 @@ h1 {
 }
 
 /*Div pai do label e do icone de help*/
-.labelDoInput{
+.labelDoInput {
     display: flex;
     /*position:relative;*/
-    transition:all 0.3s;
+    transition: all 0.3s;
 }
 
-.labelDoInput i{
-    margin-left:5px;
-    cursor:pointer;
+.labelDoInput i {
+    margin-left: 5px;
+    cursor: pointer;
 }
 
-.labelDoInput i:hover{
-    transform:scale(0.8);
-    color:green;    
+.labelDoInput i:hover {
+    transform: scale(0.8);
+    color: green;
 }
 
 /*Div pai que abriga os input's meta e receita*/
-.divDoInput{
-    position:relative;
-    display:flex;
+.divDoInput {
+    position: relative;
+    display: flex;
     align-items: center;
 }
 
-.divDoInput input{
-    padding-right:30px;
+.divDoInput input {
+    padding-right: 30px;
 }
 
 
-.divDoInput i{
+.divDoInput i {
     position: absolute;
     right: 10px;
     cursor: pointer;
     color: #999;
 }
+
 /*---------------------------------------------------------------------------------*/
 
 input[type="text"],
@@ -98,8 +108,15 @@ button:hover {
     background-color: #218838;
 }
 
+.controlar {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
 h2 {
-    margin-top: 15px;
+    margin-top: 12px;
     font-size: 18px;
     text-align: center;
 }
@@ -107,4 +124,33 @@ h2 {
 span {
     font-weight: bold;
     color: #ff5733;
+}
+
+
+
+.saldo {
+    /*border:1px solid red;*/
+    position: relative;
+    display: flex;
+    align-items: center;
+
+}
+
+
+.saldo i {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #999;
+}
+
+
+
+/*----------------------------------------*/
+/*Classe que substitui os strings dos span por bolinhas*/
+.hidden-text {
+    font-family: "ieroglifo";
+    letter-spacing:0;
+    color: black;
+    font-size:0.5em;    
 }
