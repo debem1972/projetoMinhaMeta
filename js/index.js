@@ -91,7 +91,7 @@ helpReceita.addEventListener('click', function () {
 
 
 //Audio da ajuda do campo gastos do dia
-helpGastosDoDia.addEventListener('click', function(){
+helpGastosDoDia.addEventListener('click', function () {
     ajudaGastos.play();
 })
 
@@ -161,8 +161,94 @@ function converterParaNumero(valor) {
 }
 
 
+//------------------------------------------------------------------------------
+
+// Função para alternar visibilidade dos campos de texto
+function toggleVisibility(inputId, iconId, storageKey) {
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+
+    if (input.type === "text") {
+        input.type = "password";
+        icon.classList.replace('bi-eye', 'bi-eye-slash');
+        localStorage.setItem(storageKey, "hidden");
+    } else {
+        input.type = "text";
+        icon.classList.replace('bi-eye-slash', 'bi-eye');
+        localStorage.setItem(storageKey, "visible");
+    }
+}
+
+// Função para restaurar a visibilidade com base no localStorage
+function restoreVisibility(inputId, iconId, storageKey) {
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+    const visibilityState = localStorage.getItem(storageKey);
+
+    if (visibilityState === "hidden") {
+        input.type = "password";
+        icon.classList.replace('bi-eye', 'bi-eye-slash');
+    } else {
+        input.type = "text";
+        icon.classList.replace('bi-eye-slash', 'bi-eye');
+    }
+}
+
+// Adiciona eventos de clique para alternar visibilidade
+document.getElementById('toggleMeta').addEventListener('click', function () {
+    toggleVisibility('meta', 'toggleMeta', 'metaVisibility');
+});
+
+document.getElementById('toggleReceita').addEventListener('click', function () {
+    toggleVisibility('receita', 'toggleReceita', 'receitaVisibility');
+});
+
+// Restaura visibilidade ao carregar a página
+restoreVisibility('meta', 'toggleMeta', 'metaVisibility');
+restoreVisibility('receita', 'toggleReceita', 'receitaVisibility');
 
 
 
 
 
+
+//---------------------------------------------------------------
+//Realizar estas alterações para remoção do botão e atvar a funcionalidade toggle apenas no icone do olho
+
+//No html, mudar o id do ícone do olho...
+/*<div class="input-container">
+    <div class="labelDoInput">
+        <label for="meta">Meta de Economia (R$):</label><i id="metaHelp" class="bi-question-circle"></i>
+        <audio src="./sound/audioConceitoMeta.mp3" id="som7" type="audio/mpeg">Seu navegador não é
+            compatível com este tipo de arquivo de audio!</audio>
+    </div>
+    <div class="input-wrapper">
+        <input type="password" id="meta" class="campo-financeiro" placeholder="Informe sua meta" required>
+        <i class="bi-eye" id="toggleMeta"></i>
+    </div>
+</div>
+*/
+
+//No javaScript, readaptar o código para o evento de click ser no olho e não mais no botão
+/*const toggleMeta = document.getElementById('toggleMeta');
+const metaInput = document.getElementById('meta');
+
+toggleMeta.addEventListener('click', function () {
+    // Alterna o tipo entre 'password' e 'text'
+    if (metaInput.type === 'password') {
+        metaInput.type = 'text';
+        toggleMeta.classList.remove('bi-eye');
+        toggleMeta.classList.add('bi-eye-slash'); // Altera o ícone para 'olho cortado'
+    } else {
+        metaInput.type = 'password';
+        toggleMeta.classList.remove('bi-eye-slash');
+        toggleMeta.classList.add('bi-eye'); // Altera o ícone para 'olho'
+    }
+});
+*/
+
+/*observações
+O que fizemos:
+Colocamos o ícone do "olhinho" dentro do campo input para a meta.
+Estilizamos o ícone para ficar à direita dentro do input.
+O JavaScript agora alterna entre type="password" e type="text" ao clicar no ícone, além de mudar o ícone para o de "olho cortado" quando o valor está visível*/

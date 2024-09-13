@@ -21,20 +21,32 @@
         <div class="input-container">
             <div class="labelDoInput">
                 <label for="meta">Meta de Economia (R$):</label><i id="metaHelp" class="bi-question-circle"></i>
+                <!--<button type="button" id="toggleMeta" class="toggle-visibility-btn">
+                    <i class="bi-eye" id="metaIcon"></i>
+                </button>-->
                 <audio src="./sound/audioConceitoMeta.mp3" id="som7" type="audio/mpeg">Seu navegador não é
                     compatível com este tipo de arquivo de audio!</audio>
             </div>
-            <input type="text" id="meta" class="campo-financeiro" placeholder="Informe sua meta" required>
+            <div class="divDoInput">
+                <input type="text" id="meta" class="campo-financeiro" placeholder="Informe sua meta" required>
+                <i class="bi bi-eye" id="toggleMeta"></i>
+            </div>
         </div>
 
         <div class="input-container">
             <div class="labelDoInput">
                 <label for="receita">Receita Mensal Disponível (R$):</label><i id="receitaHelp"
                     class="bi-question-circle"></i>
+                <!--<button type="button" id="toggleReceita" class="toggle-visibility-btn">-->
+                <!--<i class="bi-eye" id="receitaIcon"></i>-->
+                <!--</button>-->
                 <audio src="./sound/audioConceitoReceita.mp3" id="som8" type="audio/mpeg">Seu navegador não é
                     compatível com este tipo de arquivo de audio!</audio>
             </div>
-            <input type="text" id="receita" class="campo-financeiro" placeholder="Informe sua receita" required>
+            <div class="divDoInput">
+                <input type="text" id="receita" class="campo-financeiro" placeholder="Informe sua receita" required>
+                <i class="bi-eye" id="toggleReceita"></i>
+            </div>
         </div>
 
         <div class="input-container">
