@@ -30,6 +30,7 @@ body {
     border-radius: 8px;
     max-width: 400px;
     width: 100%;
+    position:relative;
 }
 
 h1 {
@@ -145,6 +146,39 @@ span {
 }
 
 
+/*Cards de ajuda*/
+.ajudaEscrita{
+    /*display:none;*/
+    position:absolute;
+    border:none;
+    width:90%;
+    top:140px;
+    /*left:19px;*/
+    box-shadow:3px 3px 8px grey;
+}
+
+
+.okButton{
+    width:60px;
+    float:right;
+    margin-bottom:5px;
+    transition:0.1s ease-in;
+}
+
+.okButton:active{
+    transform:scale(0.8);
+    box-shadow: inset 2px 2px 3px black;
+}
+
+
+/*Card da ajuda do campo meta*/
+#ajudaEscritaMeta,
+#ajudaEscritaReceita,
+#ajudaEscritaGastoDoDia{
+    display:none;
+}
+
+
 
 /*----------------------------------------*/
 /*Classe que substitui os strings dos span por bolinhas*/
@@ -154,3 +188,4 @@ span {
     color: black;
     font-size:0.5em;    
 }
+
