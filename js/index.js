@@ -79,19 +79,67 @@ const ajudaMeta = document.querySelector('#som7');
 const ajudaReceita = document.querySelector('#som8');
 const ajudaGastos = document.querySelector('#som9');
 
+//Capturando os elementos card
+const cardMeta = document.querySelector('#ajudaEscritaMeta');
+const cardReceita = document.querySelector('#ajudaEscritaReceita');
+const cardGastosDoDia = document.querySelector('#ajudaEscritaGastoDoDia');
+
+//Capturando o id do botão ok dos card's
+const okCard = document.querySelectorAll('.okButton');
+
 //Audio da ajuda do campo meta
 helpMeta.addEventListener('click', function () {
+
+    cardMeta.style.display = 'block';
+    //Ativar o display block do card id ##ajudaEscritaMeta por 24 segundos
+    setTimeout(function () {
+        cardMeta.style.display = 'none';
+    }, 25000);
+
     ajudaMeta.play();
 });
 
+//-----------------------------------------------------
+//Fecha o card com o ok
+// Função para fechar os cards ao clicar no botão OK
+okCard.forEach(button => {
+    button.addEventListener('click', function () {
+        // Verifica qual card o botão está associado e o fecha
+        if (this.closest('#ajudaEscritaMeta')) {
+            cardMeta.style.display = 'none'; // Fechar o card Meta
+        } else if (this.closest('#ajudaEscritaReceita')) {
+            cardReceita.style.display = 'none'; // Fechar o card Receita
+        } else if (this.closest('#ajudaEscritaGastoDoDia')) {
+            cardGastosDoDia.style.display = 'none'; // Fechar o card Gastos do Dia
+        }
+    });
+});
+
+//---------------------------------------------------------------
+
+
 //Audio da ajuda do campo receita
 helpReceita.addEventListener('click', function () {
+
+    cardReceita.style.display = 'block';
+    //Ativar o display block do card id ##ajudaReceita por 16 segundos
+    setTimeout(function () {
+        cardReceita.style.display = 'none';
+    }, 16000);
+
     ajudaReceita.play();
 });
 
 
 //Audio da ajuda do campo gastos do dia
 helpGastosDoDia.addEventListener('click', function () {
+
+    cardGastosDoDia.style.display = 'block';
+    //Ativar o display block do card id ##ajudaEscritaGastoDoDia por 19 segundos
+    setTimeout(function () {
+        cardGastosDoDia.style.display = 'none';
+    }, 19000);
+
     ajudaGastos.play();
 })
 
@@ -214,57 +262,6 @@ restoreVisibility('receita', 'toggleReceita', 'receitaVisibility');
 
 //------------------------------------------------------------------------------
 
-//Visibilidade alterado com display
-// Função para alternar visibilidade dos spans
-/*function toggleVisibilitySpans(iconId, saldoId, gastoId, storageKey) {
-    const icon = document.getElementById(iconId);
-    const saldoSpan = document.getElementById(saldoId);
-    const gastoSpan = document.getElementById(gastoId);
-
-    // Verifica se os valores estão visíveis
-    if (saldoSpan.style.display === "none" || gastoSpan.style.display === "none") {
-        // Mostra os spans e troca o ícone para 'bi-eye'
-        saldoSpan.style.display = "inline";
-        gastoSpan.style.display = "inline";
-        icon.classList.replace('bi-eye-slash', 'bi-eye');
-        localStorage.setItem(storageKey, "visible");
-    } else {
-        // Oculta os spans e troca o ícone para 'bi-eye-slash'
-        saldoSpan.style.display = "none";
-        gastoSpan.style.display = "none";
-        icon.classList.replace('bi-eye', 'bi-eye-slash');
-        localStorage.setItem(storageKey, "hidden");
-    }
-}
-
-// Função para restaurar visibilidade dos spans com base no localStorage
-function restoreVisibilitySpans(iconId, saldoId, gastoId, storageKey) {
-    const icon = document.getElementById(iconId);
-    const saldoSpan = document.getElementById(saldoId);
-    const gastoSpan = document.getElementById(gastoId);
-    const visibilityState = localStorage.getItem(storageKey);
-
-    if (visibilityState === "hidden") {
-        saldoSpan.style.display = "none";
-        gastoSpan.style.display = "none";
-        icon.classList.replace('bi-eye', 'bi-eye-slash');
-    } else {
-        saldoSpan.style.display = "inline";
-        gastoSpan.style.display = "inline";
-        icon.classList.replace('bi-eye-slash', 'bi-eye');
-    }
-}
-
-// Adiciona evento de clique para o ícone
-document.getElementById('ocultaMostraQsj').addEventListener('click', function () {
-    toggleVisibilitySpans('ocultaMostraQsj', 'saldoReal', 'gastoDiario', 'financeVisibility');
-});
-
-// Restaura visibilidade ao carregar a página
-restoreVisibilitySpans('ocultaMostraQsj', 'saldoReal', 'gastoDiario', 'financeVisibility');
-*/
-
-/*-----------------------------------------------------------------*/
 
 //Abordagem com aplicação de uma class
 // Função para alternar visibilidade dos spans
@@ -318,303 +315,3 @@ restoreVisibilitySpans('ocultaMostraQsj', 'saldoReal', 'gastoDiario', 'financeVi
 
 //----------------------------------------------------------------------------
 
-//Terceira abordagem
-// Função para alternar visibilidade dos spans
-/*function toggleVisibilitySpans(iconId, saldoId, gastoId, storageKey) {
-    const icon = document.getElementById(iconId);
-    const saldoSpan = document.getElementById(saldoId);
-    const gastoSpan = document.getElementById(gastoId);
-
-    // Verifica se os spans estão ocultos com bolinhas
-    if (localStorage.getItem(storageKey) === "hidden") {
-        // Restaura o texto original dos spans
-        saldoSpan.textContent = localStorage.getItem(saldoId) || 'R$ 0,00';
-        gastoSpan.textContent = localStorage.getItem(gastoId) || 'R$ 0,00';
-        icon.classList.replace('bi-eye-slash', 'bi-eye');
-        localStorage.setItem(storageKey, "visible");
-    } else {
-        // Substitui o conteúdo dos spans por bolinhas
-        localStorage.setItem(saldoId, saldoSpan.textContent);
-        localStorage.setItem(gastoId, gastoSpan.textContent);
-        saldoSpan.textContent = '•'.repeat(saldoSpan.textContent.length);
-        gastoSpan.textContent = '•'.repeat(gastoSpan.textContent.length);
-        icon.classList.replace('bi-eye', 'bi-eye-slash');
-        localStorage.setItem(storageKey, "hidden");
-    }
-}
-
-// Função para restaurar visibilidade dos spans com base no localStorage
-function restoreVisibilitySpans(iconId, saldoId, gastoId, storageKey) {
-    const icon = document.getElementById(iconId);
-    const saldoSpan = document.getElementById(saldoId);
-    const gastoSpan = document.getElementById(gastoId);
-
-    if (localStorage.getItem(storageKey) === "hidden") {
-        // Substitui o conteúdo dos spans por bolinhas ao restaurar
-        saldoSpan.textContent = '•'.repeat(localStorage.getItem(saldoId).length);
-        gastoSpan.textContent = '•'.repeat(localStorage.getItem(gastoId).length);
-        icon.classList.replace('bi-eye', 'bi-eye-slash');
-    } else {
-        saldoSpan.textContent = localStorage.getItem(saldoId) || 'R$ 0,00';
-        gastoSpan.textContent = localStorage.getItem(gastoId) || 'R$ 0,00';
-        icon.classList.replace('bi-eye-slash', 'bi-eye');
-    }
-}
-
-// Adiciona evento de clique para o ícone
-document.getElementById('ocultaMostraQsj').addEventListener('click', function () {
-    toggleVisibilitySpans('ocultaMostraQsj', 'saldoReal', 'gastoDiario', 'financeVisibility');
-});
-
-// Restaura visibilidade ao carregar a página
-restoreVisibilitySpans('ocultaMostraQsj', 'saldoReal', 'gastoDiario', 'financeVisibility');
-
-*/
-
-//-------------------------------------------------------------------------------
-
-//Quarta abordagem
-// Função para alternar visibilidade dos spans
-/*function toggleVisibilitySpans(iconId, saldoId, gastoId, storageKey) {
-    const icon = document.getElementById(iconId);
-    const saldoSpan = document.getElementById(saldoId);
-    const gastoSpan = document.getElementById(gastoId);
-
-    // Verifica se os spans estão ocultos com bolinhas
-    if (localStorage.getItem(storageKey) === "hidden") {
-        // Restaura o texto original dos spans com a formatação de moeda brasileira
-        saldoSpan.textContent = formatToBRL(localStorage.getItem(saldoId)) || 'R$ 0,00';
-        gastoSpan.textContent = formatToBRL(localStorage.getItem(gastoId)) || 'R$ 0,00';
-        icon.classList.replace('bi-eye-slash', 'bi-eye');
-        localStorage.setItem(storageKey, "visible");
-    } else {
-        // Substitui o conteúdo dos spans por bolinhas
-        localStorage.setItem(saldoId, saldoSpan.textContent);
-        localStorage.setItem(gastoId, gastoSpan.textContent);
-        saldoSpan.textContent = '•'.repeat(saldoSpan.textContent.length);
-        gastoSpan.textContent = '•'.repeat(gastoSpan.textContent.length);
-        icon.classList.replace('bi-eye', 'bi-eye-slash');
-        localStorage.setItem(storageKey, "hidden");
-    }
-}
-
-// Função para restaurar visibilidade dos spans com base no localStorage
-function restoreVisibilitySpans(iconId, saldoId, gastoId, storageKey) {
-    const icon = document.getElementById(iconId);
-    const saldoSpan = document.getElementById(saldoId);
-    const gastoSpan = document.getElementById(gastoId);
-
-    if (localStorage.getItem(storageKey) === "hidden") {
-        // Substitui o conteúdo dos spans por bolinhas ao restaurar
-        saldoSpan.textContent = '•'.repeat(localStorage.getItem(saldoId).length);
-        gastoSpan.textContent = '•'.repeat(localStorage.getItem(gastoId).length);
-        icon.classList.replace('bi-eye', 'bi-eye-slash');
-    } else {
-        // Restaura o texto original dos spans com formatação de moeda brasileira
-        saldoSpan.textContent = formatToBRL(localStorage.getItem(saldoId)) || 'R$ 0,00';
-        gastoSpan.textContent = formatToBRL(localStorage.getItem(gastoId)) || 'R$ 0,00';
-        icon.classList.replace('bi-eye-slash', 'bi-eye');
-    }
-}
-
-// Função para formatar valores como moeda brasileira
-function formatToBRL(value) {
-    return Number(value.replace(/[^0-9,-]+/g, "").replace(",", ".")).toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-    });
-}
-
-// Adiciona evento de clique para o ícone
-document.getElementById('ocultaMostraQsj').addEventListener('click', function () {
-    toggleVisibilitySpans('ocultaMostraQsj', 'saldoReal', 'gastoDiario', 'financeVisibility');
-});
-
-// Restaura visibilidade ao carregar a página
-restoreVisibilitySpans('ocultaMostraQsj', 'saldoReal', 'gastoDiario', 'financeVisibility');
-*/
-
-//---------------------------------------------------------------------------
-//Quintab abordagem
-// Função para alternar visibilidade dos spans
-/*function toggleVisibilitySpans(iconId, saldoId, gastoId, storageKey) {
-    const icon = document.getElementById(iconId);
-    const saldoSpan = document.getElementById(saldoId);
-    const gastoSpan = document.getElementById(gastoId);
-
-    // Verifica se os spans estão ocultos com bolinhas
-    if (localStorage.getItem(storageKey) === "hidden") {
-        // Restaura o texto original dos spans com a formatação de moeda brasileira
-        saldoSpan.textContent = formatToBRL(localStorage.getItem(saldoId)) || 'R$ 0,00';
-        gastoSpan.textContent = formatToBRL(localStorage.getItem(gastoId)) || 'R$ 0,00';
-        icon.classList.replace('bi-eye-slash', 'bi-eye');
-        localStorage.setItem(storageKey, "visible");
-    } else {
-        // Salva os valores originais no localStorage antes de ocultar
-        localStorage.setItem(saldoId, saldoSpan.textContent.replace(/[^\d,.-]/g, ''));
-        localStorage.setItem(gastoId, gastoSpan.textContent.replace(/[^\d,.-]/g, ''));
-        saldoSpan.textContent = '•'.repeat(saldoSpan.textContent.length);
-        gastoSpan.textContent = '•'.repeat(gastoSpan.textContent.length);
-        icon.classList.replace('bi-eye', 'bi-eye-slash');
-        localStorage.setItem(storageKey, "hidden");
-    }
-}
-
-// Função para restaurar visibilidade dos spans com base no localStorage
-function restoreVisibilitySpans(iconId, saldoId, gastoId, storageKey) {
-    const icon = document.getElementById(iconId);
-    const saldoSpan = document.getElementById(saldoId);
-    const gastoSpan = document.getElementById(gastoId);
-
-    if (localStorage.getItem(storageKey) === "hidden") {
-        // Oculta os valores dos spans por bolinhas
-        saldoSpan.textContent = '•'.repeat(localStorage.getItem(saldoId).length);
-        gastoSpan.textContent = '•'.repeat(localStorage.getItem(gastoId).length);
-        icon.classList.replace('bi-eye', 'bi-eye-slash');
-    } else {
-        // Restaura os valores com a formatação de moeda brasileira
-        saldoSpan.textContent = formatToBRL(localStorage.getItem(saldoId)) || 'R$ 0,00';
-        gastoSpan.textContent = formatToBRL(localStorage.getItem(gastoId)) || 'R$ 0,00';
-        icon.classList.replace('bi-eye-slash', 'bi-eye');
-    }
-}
-
-// Função para formatar valores como moeda brasileira
-function formatToBRL(value) {
-    if (!value || isNaN(value.replace(',', '.'))) return 'R$ 0,00'; // Valor inválido ou ausente
-    let numValue = parseFloat(value.replace(/\./g, '').replace(',', '.'));
-    return numValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-}
-
-// Adiciona evento de clique para o ícone
-document.getElementById('ocultaMostraQsj').addEventListener('click', function () {
-    toggleVisibilitySpans('ocultaMostraQsj', 'saldoReal', 'gastoDiario', 'financeVisibility');
-});
-
-// Restaura visibilidade ao carregar a página
-restoreVisibilitySpans('ocultaMostraQsj', 'saldoReal', 'gastoDiario', 'financeVisibility');
-*/
-
-//-----------------------------------------------------------------------
-//Sexta abordagem
-// Função para alternar visibilidade dos spans
-/*function toggleVisibilitySpans(iconId, saldoId, gastoId, storageKey) {
-    const icon = document.getElementById(iconId);
-    const saldoSpan = document.getElementById(saldoId);
-    const gastoSpan = document.getElementById(gastoId);
-
-    // Verifica se os spans estão ocultos com bolinhas
-    if (localStorage.getItem(storageKey) === "hidden") {
-        // Restaura o texto original dos spans com a formatação de moeda brasileira
-        saldoSpan.textContent = formatToBRL(localStorage.getItem(saldoId)) || 'R$ 0,00';
-        gastoSpan.textContent = formatToBRL(localStorage.getItem(gastoId)) || 'R$ 0,00';
-        icon.classList.replace('bi-eye-slash', 'bi-eye');
-        localStorage.setItem(storageKey, "visible");
-    } else {
-        // Salva os valores originais no localStorage antes de ocultar
-        localStorage.setItem(saldoId, saldoSpan.textContent.replace(/[^\d,.-]/g, ''));
-        localStorage.setItem(gastoId, gastoSpan.textContent.replace(/[^\d,.-]/g, ''));
-        saldoSpan.textContent = '•'.repeat(saldoSpan.textContent.length);
-        gastoSpan.textContent = '•'.repeat(gastoSpan.textContent.length);
-        icon.classList.replace('bi-eye', 'bi-eye-slash');
-        localStorage.setItem(storageKey, "hidden");
-    }
-}
-
-// Função para restaurar visibilidade dos spans com base no localStorage
-function restoreVisibilitySpans(iconId, saldoId, gastoId, storageKey) {
-    const icon = document.getElementById(iconId);
-    const saldoSpan = document.getElementById(saldoId);
-    const gastoSpan = document.getElementById(gastoId);
-
-    if (localStorage.getItem(storageKey) === "hidden") {
-        // Oculta os valores dos spans por bolinhas
-        saldoSpan.textContent = '•'.repeat(localStorage.getItem(saldoId).length);
-        gastoSpan.textContent = '•'.repeat(localStorage.getItem(gastoId).length);
-        icon.classList.replace('bi-eye', 'bi-eye-slash');
-    } else {
-        // Restaura os valores com a formatação de moeda brasileira
-        saldoSpan.textContent = formatToBRL(localStorage.getItem(saldoId)) || 'R$ 0,00';
-        gastoSpan.textContent = formatToBRL(localStorage.getItem(gastoId)) || 'R$ 0,00';
-        icon.classList.replace('bi-eye-slash', 'bi-eye');
-    }
-}
-
-// Função para formatar valores como moeda brasileira
-function formatToBRL(value) {
-    if (!value || isNaN(value.replace(',', '.'))) return 'R$ 0,00'; // Valor inválido ou ausente
-    let numValue = parseFloat(value.replace(/\./g, '').replace(',', '.'));
-    return numValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-}
-
-// Adiciona evento de clique para o ícone
-document.getElementById('ocultaMostraQsj').addEventListener('click', function () {
-    toggleVisibilitySpans('ocultaMostraQsj', 'saldoReal', 'gastoDiario', 'financeVisibility');
-});
-
-// Restaura visibilidade ao carregar a página
-restoreVisibilitySpans('ocultaMostraQsj', 'saldoReal', 'gastoDiario', 'financeVisibility');
-*/
-
-//--------------------------------------------------------------
-
-//Sétima abordagem: aplicação de uma class com uma fonte especial
-// Função para alternar visibilidade dos spans
-/*function toggleVisibilitySpans(iconId, saldoId, gastoId, storageKey) {
-    const icon = document.getElementById(iconId);
-    const saldoSpan = document.getElementById(saldoId);
-    const gastoSpan = document.getElementById(gastoId);
-
-    if (localStorage.getItem(storageKey) === "hidden") {
-        // Restaura o texto original dos spans com a formatação de moeda brasileira
-        saldoSpan.textContent = formatToBRL(localStorage.getItem(saldoId)) || 'R$ 0,00';
-        gastoSpan.textContent = formatToBRL(localStorage.getItem(gastoId)) || 'R$ 0,00';
-        saldoSpan.classList.remove('hidden-text');
-        gastoSpan.classList.remove('hidden-text');
-        icon.classList.replace('bi-eye-slash', 'bi-eye');
-        localStorage.setItem(storageKey, "visible");
-    } else {
-        // Salva os valores originais no localStorage antes de ocultar
-        localStorage.setItem(saldoId, saldoSpan.textContent.replace(/[^\d,.-]/g, ''));
-        localStorage.setItem(gastoId, gastoSpan.textContent.replace(/[^\d,.-]/g, ''));
-        saldoSpan.classList.add('hidden-text');
-        gastoSpan.classList.add('hidden-text');
-        icon.classList.replace('bi-eye', 'bi-eye-slash');
-        localStorage.setItem(storageKey, "hidden");
-    }
-}
-
-// Função para restaurar visibilidade dos spans com base no localStorage
-function restoreVisibilitySpans(iconId, saldoId, gastoId, storageKey) {
-    const icon = document.getElementById(iconId);
-    const saldoSpan = document.getElementById(saldoId);
-    const gastoSpan = document.getElementById(gastoId);
-
-    if (localStorage.getItem(storageKey) === "hidden") {
-        saldoSpan.classList.add('hidden-text');
-        gastoSpan.classList.add('hidden-text');
-        icon.classList.replace('bi-eye', 'bi-eye-slash');
-    } else {
-        saldoSpan.textContent = formatToBRL(localStorage.getItem(saldoId)) || 'R$ 0,00';
-        gastoSpan.textContent = formatToBRL(localStorage.getItem(gastoId)) || 'R$ 0,00';
-        saldoSpan.classList.remove('hidden-text');
-        gastoSpan.classList.remove('hidden-text');
-        icon.classList.replace('bi-eye-slash', 'bi-eye');
-    }
-}
-
-// Função para formatar valores como moeda brasileira
-function formatToBRL(value) {
-    if (!value || isNaN(value.replace(',', '.'))) return 'R$ 0,00'; // Valor inválido ou ausente
-    let numValue = parseFloat(value.replace(/\./g, '').replace(',', '.'));
-    return numValue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-}
-
-// Adiciona evento de clique para o ícone
-document.getElementById('ocultaMostraQsj').addEventListener('click', function () {
-    toggleVisibilitySpans('ocultaMostraQsj', 'saldoReal', 'gastoDiario', 'financeVisibility');
-});
-
-// Restaura visibilidade ao carregar a página
-restoreVisibilitySpans('ocultaMostraQsj', 'saldoReal', 'gastoDiario', 'financeVisibility');
-*/

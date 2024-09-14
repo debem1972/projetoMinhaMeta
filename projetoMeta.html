@@ -28,7 +28,7 @@
                     compatível com este tipo de arquivo de audio!</audio>
             </div>
             <div class="divDoInput">
-                <input type="text" id="meta" class="campo-financeiro" placeholder="Informe sua meta" required>
+                <input type="text" id="meta" class="campo-financeiro" placeholder="Informe sua meta" title="Insira valores no formato 50000 para R$500,00 por exemplo!" required>
                 <i class="bi bi-eye" id="toggleMeta"></i>
             </div>
         </div>
@@ -44,7 +44,7 @@
                     compatível com este tipo de arquivo de audio!</audio>
             </div>
             <div class="divDoInput">
-                <input type="text" id="receita" class="campo-financeiro" placeholder="Informe sua receita" required>
+                <input type="text" id="receita" class="campo-financeiro" placeholder="Informe sua receita" title="Insira valores no formato 500000 para R$5.000,00 por exemplo!" required>
                 <i class="bi bi-eye" id="toggleReceita"></i>
             </div>
         </div>
@@ -60,7 +60,50 @@
                 <audio src="./sound/audioConceitoGastos.mp3" id="som9" type="audio/mpeg">Seu navegador não é
                     compatível com este tipo de arquivo de audio!</audio>
             </div>
-            <input type="text" id="gasto" class="campo-financeiro" placeholder="Informe seus gastos de hoje" required>
+            <input type="text" id="gasto" class="campo-financeiro" placeholder="Informe seus gastos de hoje" title="Insira valores no formato 2590 para R$25,90 por exemplo!" required>
+        </div>
+
+        <!--Card's de ajuda-->
+        <!--Ajuda escrita campo meta-->
+        <div class="card col-8 text-bg-primary ajudaEscrita" id="ajudaEscritaMeta">
+            <div class="card-body">
+                <h5 class="card-title">Campo Meta</h5>
+                <p class="card-text">
+                    Ok! Este é o campo meta. Ele serve para você inserir um valor que deseja economizar <br>
+                    no final do mês. A qualquer momento, você poderá editá-lo para mais ou para menos conforme sua
+                    vontade. Mas lembre-se,<br>
+                    editando o valor da meta, serão alterados também os valores de Saldo Disponível Real<br>
+                    e quanto você poderá gastar por dia, para que possa atingir sua meta!
+                </p>
+                <button type="button" class="btn btn-info okButton">Ok</button>
+            </div>
+        </div>
+
+        <!--Ajuda escrita campo receita-->
+        <div class="card col-8 text-bg-primary ajudaEscrita" id="ajudaEscritaReceita">
+            <div class="card-body">
+                <h5 class="card-title">Campo Receita</h5>
+                <p class="card-text">
+                    Em receita mensal disponível, você deverá inserir aquele valor com o qual você conclui<br>
+                    que realmente poderá contar com ele.<br>
+                    Ou seja, aquele valor líquido já descontadas as despesas fixas como água, energia elétrica
+                    e internet! 
+                </p>
+                <button type="button" class="btn btn-info okButton">Ok</button>
+            </div>
+        </div>
+
+        <!--Ajuda escrita campo Gasto do dia-->
+        <div class="card col-8 text-bg-primary ajudaEscrita" id="ajudaEscritaGastoDoDia">
+            <div class="card-body">
+                <h5 class="card-title">Campo Gasto do Dia</h5>
+                <p class="card-text">
+                    No campo gasto do dia, insira cada valor que você gastou durante o dia, pois este valor<br>
+                    será somado aos gastos totais salvos no seu browser, cujo cálculo, terá como resultante<br>
+                    o saldo disponível real e por sua vez, gerando a disponibilidade de gastos diários.  
+                </p>
+                <button type="button" class="btn btn-info okButton">Ok</button>
+            </div>
         </div>
 
         <button id="adicionarGasto">Adicionar Gasto</button>
