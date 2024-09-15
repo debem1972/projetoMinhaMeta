@@ -107,10 +107,16 @@ okCard.forEach(button => {
         // Verifica qual card o botão está associado e o fecha
         if (this.closest('#ajudaEscritaMeta')) {
             cardMeta.style.display = 'none'; // Fechar o card Meta
+            ajudaMeta.pause(); // Pausa o áudio
+            ajudaMeta.currentTime = 0; // Reseta o tempo para o início
         } else if (this.closest('#ajudaEscritaReceita')) {
             cardReceita.style.display = 'none'; // Fechar o card Receita
+            ajudaReceita.pause(); // Pausa o áudio
+            ajudaReceita.currentTime = 0; // Reseta o tempo para o início
         } else if (this.closest('#ajudaEscritaGastoDoDia')) {
             cardGastosDoDia.style.display = 'none'; // Fechar o card Gastos do Dia
+            ajudaGastos.pause(); // Pausa o áudio
+            ajudaGastos.currentTime = 0; // Reseta o tempo para o início
         }
     });
 });
