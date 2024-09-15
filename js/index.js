@@ -1,5 +1,3 @@
-//Nova abordagem do código salvando saldo real e Gastos diários máximo no localStorage
-
 // Selecionar todos os elementos input (texto e data)
 const Inputs = document.querySelectorAll('input');
 const botaoAdicionarGasto = document.querySelector('#adicionarGasto');
@@ -57,14 +55,14 @@ function preencherCampos() {
     const gastoDiario = localStorage.getItem('gastoDiario');
 
     if (meta) {
-        document.getElementById('meta').value = `R$${parseFloat(meta).toFixed(2)}`;
+        document.getElementById('meta').value = `R$${parseFloat(meta).toFixed(2).replace('.', ',')}`;
     }
     if (receita) {
-        document.getElementById('receita').value = `R$${parseFloat(receita).toFixed(2)}`;
+        document.getElementById('receita').value = `R$${parseFloat(receita).toFixed(2).replace('.', ',')}`;
     }
     if (saldoReal && gastoDiario) {
-        document.getElementById('saldoReal').textContent = `R$ ${parseFloat(saldoReal).toFixed(2)}`;
-        document.getElementById('gastoDiario').textContent = `R$ ${parseFloat(gastoDiario).toFixed(2)}`;
+        document.getElementById('saldoReal').textContent = `R$ ${parseFloat(saldoReal).toFixed(2).replace('.', ',')}`;
+        document.getElementById('gastoDiario').textContent = `R$ ${parseFloat(gastoDiario).toFixed(2).replace('.', ',')}`;
     }
 }
 //-------------------------------------------------------------------------------------
@@ -107,10 +105,16 @@ okCard.forEach(button => {
         // Verifica qual card o botão está associado e o fecha
         if (this.closest('#ajudaEscritaMeta')) {
             cardMeta.style.display = 'none'; // Fechar o card Meta
+            ajudaMeta.pause(); // Pausa o áudio
+            ajudaMeta.currentTime = 0; // Reseta o tempo para o início
         } else if (this.closest('#ajudaEscritaReceita')) {
             cardReceita.style.display = 'none'; // Fechar o card Receita
+            ajudaReceita.pause(); // Pausa o áudio
+            ajudaReceita.currentTime = 0; // Reseta o tempo para o início
         } else if (this.closest('#ajudaEscritaGastoDoDia')) {
             cardGastosDoDia.style.display = 'none'; // Fechar o card Gastos do Dia
+            ajudaGastos.pause(); // Pausa o áudio
+            ajudaGastos.currentTime = 0; // Reseta o tempo para o início
         }
     });
 });
@@ -180,8 +184,8 @@ document.getElementById('adicionarGasto').addEventListener('click', function () 
     const gastoDiarioMaximo = saldoDisponivelReal / diasRestantes;
 
     // Atualiza os spans com os novos valores
-    document.getElementById('saldoReal').textContent = `R$ ${saldoDisponivelReal.toFixed(2)}`;
-    document.getElementById('gastoDiario').textContent = `R$ ${gastoDiarioMaximo.toFixed(2)}`;
+    document.getElementById('saldoReal').textContent = `R$ ${saldoDisponivelReal.toFixed(2).replace('.', ',')}`;
+    document.getElementById('gastoDiario').textContent = `R$ ${gastoDiarioMaximo.toFixed(2).replace('.', ',')}`;
 
     // Armazena saldo e gasto diário no localStorage para exibição posterior
     localStorage.setItem('saldoReal', saldoDisponivelReal);
